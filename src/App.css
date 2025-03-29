@@ -6,12 +6,12 @@
 }
 
 body{
-  background-color: rgb(245, 238, 238);
+  background-color: whitesmoke;
 }
 h1 {
   text-align: center;
   margin-top: 20px;
-  color: #4f46e5;
+  color: rgb(19, 146, 155);
 }
 
 .chat-contenar{
@@ -24,7 +24,7 @@ h1 {
   flex-direction: column;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-  background-color: #fafafa;
+  background-color: #fbfafa;
 }
 
 .massage-box{
@@ -36,7 +36,7 @@ h1 {
   gap: 12px;
 }
 
-.msagge{
+.massage{
   padding: 12px 16px;
   border-radius: 16px;
   max-width: 80%;
@@ -44,18 +44,22 @@ h1 {
   word-break: break-word;
   font-size: 14px;
   transition: all 0.3s ease;
-}
-
-.msagge{
   align-self: flex-end;
-  background-color: rgb(231, 225, 225);
+  background-color: rgb(227, 226, 226);
   color: rgb(39, 38, 38);
 }
 
 .bot-massage{
   align-self: flex-start;
-  background-color: blue;
-  color: white;
+  background-color: #e0f7ef;
+  color: black;
+  padding: 12px 16px;
+  border-radius: 16px;
+  max-width: 80%;
+  line-height: 1.4;
+  word-break: break-word;
+  font-size: 14px;
+  transition: all 0.3s ease;
 }
 
 .input-contenar{
@@ -76,21 +80,21 @@ h1 {
 }
 
 .input-contenar input:focus {
-  border-color: #4f46e5;
+  border-color: rgb(146, 244, 218);
 }
 
 .input-contenar button {
   margin-left: 8px;
-  background-color: #4f46e5;
+  background-color: rgb(59, 237, 217);
   border: none;
   padding: 10px 18px;
   border-radius: 12px;
-  color: #fff;
+  color: black;
   cursor: pointer;
   transition: background-color 0.2s ease;
   font-size: 14px;
 }
 
 .input-contenar button:hover {
-  background-color: #3730a3;
+  background-color: rgb(156, 241, 213);
 }

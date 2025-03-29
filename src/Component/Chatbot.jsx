@@ -41,7 +41,7 @@ const Chatbot = () => {
       const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "No reply";
       await showTyping(reply);
     } catch {
-      setChats((prev) => [...prev]);
+      setChats((prev) => [...prev,{who: "bot", msg: "API error."}]);
     }
   };
 
@@ -49,7 +49,7 @@ const Chatbot = () => {
     <div className="chat-contenar">
       <div className="massage-box">
         {chats.map((c, i) => (
-          <div key={i} className="msagge">
+          <div key={i} className={c.who === "bot" ? "bot-massage" : "massage"}>
             <ReactMarkdown>{c.msagge}</ReactMarkdown>
           </div>
         ))}
