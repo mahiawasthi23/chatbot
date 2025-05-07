@@ -5,6 +5,7 @@ const Chatbot = () => {
   const [chats, setChats] = useState([]);
   const [text, setText] = useState("");
   const [typing, setTyping] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const key = import.meta.env.VITE_APP_URI;
   const URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${key}`;
@@ -20,7 +21,8 @@ const Chatbot = () => {
   };
 
   const sendMsg = async () => {
-    if (!text.trim()) return;
+    if (!text.trim() || loading) return;
+    setLoading(true);
     setChats((prev) => [...prev, { who: "me", msagge: text }]);
     const ask = text;
     setText("");
@@ -42,6 +44,8 @@ const Chatbot = () => {
       await showTyping(reply);
     } catch {
       setChats((prev) => [...prev,{who: "bot", msg: "API error."}]);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -65,9 +69,12 @@ const Chatbot = () => {
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Write you massage here"
-          onKeyDown={(e) => e.key === "Enter" && sendMsg()}
+          onKeyDown={(e) => { if (e.key === "Enter" && !loading){
+            sendMsg();
+           }
+          }}
         />
-        <button onClick={sendMsg}>Send</button>
+        <button onClick={sendMsg} disabled={loading}>Send</button>
       </div>
     </div>
   );
